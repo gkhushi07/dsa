@@ -13,7 +13,7 @@ class Trie:
         for char in word:
             if char not in current_node.children:
                 current_node.children[char] = TrieNode(char)
-                current_node = current_node.children[char]
+            current_node = current_node.children[char]
             current_node.end_of_word = True
     
     def search(self, word):

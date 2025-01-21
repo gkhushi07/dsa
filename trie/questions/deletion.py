@@ -18,7 +18,6 @@ class Trie:
     
 
     def delete(self, word):
-        node = self.root
         def _delete( current_node, word,depth):
 
             if len(word) == depth:
@@ -44,12 +43,24 @@ class Trie:
     def display(self, node=None, word=""):
         if node is None:
             node = self.root
-        # If this node marks the end of a word, print it
         if node.is_end:
             print(f"Word: {word}")
-        # Traverse each child node
         for char, child_node in node.children.items():
             self.display(child_node, word + char)
+    
+    def erase(self, word):
+        current_node = self.root
+        current_node.prefix_count -= 1
+        nodes = [current_node]
+        
+        for char in word:
+            current_node = current_node.children[char]
+            current_node.prefix_count -= 1
+            nodes.append(current_node)
+            
+        nodes[-1].word_count -= 1
+        if nodes[-1].word_count == 0:
+            nodes[-1].is_end = False
 
 # Example Usage
 trie = Trie()
