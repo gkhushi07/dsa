@@ -55,7 +55,7 @@ public class RottenOranges{
             q.remove();
 
             for(int i=0; i<4; i++){
-                int h_coord = start_h_coord +directions[i];
+                int h_coord = start_h_coord + directions[i];
                 int v_coord = start_v_coord + directions[i+4];
                 
                 if(h_coord>=0 && h_coord< r && v_coord>=0 && v_coord<c && grid[h_coord][v_coord]==1){
